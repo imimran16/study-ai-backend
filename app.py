@@ -39,5 +39,5 @@ Rules:
     })
 
 # ✅ CORRECT MAIN CHECK
-if name == "main":
+if name == "__main__":
     app.run(host="0.0.0.0", port=10000)
