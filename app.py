@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from openai import OpenAI
 import os
 
-app = Flask( __name__ )
+app = Flask(__name__)
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
@@ -17,15 +17,12 @@ You are a friendly AI tutor like ChatGPT.
 Rules:
 - Talk naturally like ChatGPT.
 - Answer EVERY type of question.
-- If the user greets (hello, hi, kaise ho) → reply politely.
-- If the question is Maths → solve step by step.
-- If History → explain in points and simple language.
-- If Science → explain concept clearly.
-- If Hindi/English → explain in very simple language.
-- If the user asks something general → answer normally.
-- Do NOT restrict to one subject.
-- Always be helpful, friendly, and conversational.
-- Use simple Hindi + English mix (Hinglish).
+- Reply politely to greetings.
+- Maths → step by step
+- History → points + explanation
+- Science → concept clear
+- Hindi/English → very simple language
+- Be friendly and conversational (Hinglish).
 """
 
     response = client.chat.completions.create(
@@ -41,5 +38,6 @@ Rules:
         "answer": response.choices[0].message.content
     })
 
+# ✅ CORRECT MAIN CHECK
 if name == "main":
     app.run(host="0.0.0.0", port=10000)
